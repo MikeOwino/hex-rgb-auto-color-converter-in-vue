@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Hex/RGB Auto Color Converter in Vue</title>
+  <link href="https://fonts.googleapis.com/css?family=Spartan:500,700|Fira+Code:500&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<main :class="darkMode == 'dark' ? 'dark' : ''">
+	<div id="app" :style="{ boxShadow, borderColor }">
+
+		<div id="swatch-container">
+			<div id="swatch" :style="{ backgroundColor, borderColor }"></div>
+			<form id="dark-mode-toggle">
+				<input type="radio" v-model="darkMode" id="light" name="dark-mode" value="light">
+				<label for="light"><span class="sr">Light mode</span></label>
+				<input type="radio" v-model="darkMode" id="dark" name="dark-mode" value="dark">
+				<label for="dark"><span class="sr">Dark mode</span></label>
+			</form>
+		</div>
+
+		<form id="app-form" action="" :style="{ borderColor }">
+			<h1>Automatic RGB/Hex color converter</h1>
+
+			<div id="value-wrap" class="group">
+				<label for="value">Enter a color:</label>
+				<div>
+					<input v-model="value" @input="validate" id="value" type="text" placeholder="Any RGB or hex value" />
+				</div>
+			</div>
+
+			<div class="group">
+				<ul>
+					<li><strong>Format detected:</strong> {{ fromFormat }}</li>
+					<li><strong>Converting to:</strong> {{ toFormat }}</li>
+				</ul>
+			</div>
+
+			<div class="flex group">
+				<label for="result">Converted value:</label>
+			</div>
+
+			<div class="flex">
+				<input ref="output" id="result" tabindex="-1" type="text" :value="convertedValue" />
+				<button @click.prevent="copy" :disabled="!convertedValue" type="button" ref="copyButton">{{ copyButtonText }}</button>
+			</div>
+		</form>
+	</div>
+</main>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script><script  src="./script.js"></script>
+
+  
+  <!-- ShopifyWidget -->
+  <script>
+    var url = './init.js';
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+  "enabled":true,
+  "chatButtonSetting":{
+      "backgroundColor":"#4dc247",
+      "ctaText":"",
+      "borderRadius":"25",
+      "marginLeft":"0",
+      "marginBottom":"50",
+      "marginRight":"50",
+      "position":"left"
+  },
+  "brandSetting":{
+      "brandName":"Shemus Parks",
+      "brandSubTitle":"Typically replies within minutes",
+      "brandImg":"https://res.cloudinary.com/weknow-creators/image/upload/v1645869255/slogo_edqoqs.png",
+      "welcomeText":"Hi there!\nHow can we help you?",
+      "messageText":"Hello, I have a question.",
+      "backgroundColor":"#ffffffeb",
+      "ctaText":"Start Chat",
+      "borderRadius":"25",
+      "autoShow":false,
+      "phoneNumber":"254735266634"
+  }
+};
+    s.onload = function() {
+        CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+</script>
+<!-- ShopifyWidget -->
+
+</body>
+</html>
